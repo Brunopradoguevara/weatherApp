@@ -1,0 +1,85 @@
+
+.card{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__conteiner{
+    max-width: 500px;
+    width: 80%;
+    padding: 2rem 1rem;
+    background-color: hsla(0, 0%, 50%,0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card__header{  
+    text-align: center;
+}
+.card__title{
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0.5rem;
+}
+.card__location{
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+.card__main{
+    display: flex;
+}
+.weather_img__conteiner{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+.weather_img{
+   width: 100%;
+}
+.weather__information{
+    width: 100%;
+}
+.weather__description{
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin: 0;
+}
+.weather__features{
+    list-style: none;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.weather__feature--value{
+    font-weight: 700;
+}
+
+.temperature__value{
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.btn__temperature--change{
+    font-weight: 700;
+    font-size: 1.5rem;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0px 0px 10px black;
+    cursor: pointer;
+    
+}
+.btn__temperature--change:hover{
+    background-color: lightblue;
+    color: green;
+}
