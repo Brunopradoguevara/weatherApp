@@ -2,8 +2,10 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import './components/weatherCard.css'
+import './components/modalAlert.css'
 import axios from 'axios'
 import WeatherCard from './components/WeatherCard'
+import ModalAlert from './components/ModalAlert'
 
 function App() {
 
@@ -79,13 +81,22 @@ function App() {
   useEffect(()=>{
     const apiKey = "39164433-94ec2e1273f88ab80880706f0"
     const url = `https://pixabay.com/api/?key=${apiKey}&q=${weather?.weather[0].description}`
-    axios.get(url)
-    .then(res => setImage(res.data))
-    .catch(err => console.log(err))
+    if(weather?.weather[0].description==="moderate rain"){
+      const newUrl=`https://pixabay.com/api/?key=${apiKey}&q=rain}`
+      axios.get(newUrl)
+      .then(res => setImage(res.data))
+      .catch(err => console.log(err))
+    }else{
+      axios.get(url)
+      .then(res => setImage(res.data))
+      .catch(err => console.log(err))
+    }
+    console.log(weather?.weather[0].description)
+    
   },[weather])
 
   const objStile = {
-    backgroundImage: `url(${image?.hits[0].largeImageURL})`,
+    backgroundImage: `url(${image?.hits[0]?.largeImageURL})`,
     backgroundSize: 'cover',
   }
   console.log(image?.hits[0]?.largeImageURL)
@@ -93,7 +104,7 @@ function App() {
 
   const handleSubmit = (e)=>{
     e.preventDefault()
-    setInputValue(inputSearch.current.value)
+    setInputValue(inputSearch.current.value.trim())
     console.log(inputValue)
     inputSearch.current.value= ""
   }
@@ -114,6 +125,7 @@ function App() {
           weather = {weather}
           temp = {temp}
         />
+        <ModalAlert/>
       </div>
     </div>
   )
