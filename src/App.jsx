@@ -43,7 +43,7 @@ function App() {
       if(inputValue){
         const apiKey = "43be0da6a4d12a1f3d653a5f3389d21b"
         const cityName= inputValue
-        const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`
+        const url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`
         axios.get(url)
         .then(res =>{
           console.log(res.data[0])
