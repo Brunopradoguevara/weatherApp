@@ -1,9 +1,8 @@
 import { useState } from "react"
 
 
-const WeatherCard = ({weather,temp}) => {
+const WeatherCard = ({weather,temp,coords}) => {
 
-    console.log(weather)
     const [isCelsius, setisCelsius] = useState(true)
     const handleChangeTemp = () =>{
       setisCelsius(!isCelsius)
@@ -13,11 +12,11 @@ const WeatherCard = ({weather,temp}) => {
       <div className="card__conteiner">
         <div className="card__header">
           <h1 className="card__title">Weather App</h1>
-          <h2 className="card__location">{weather?.name}, {weather?.sys.country}</h2>
+          <h2 className="card__location">{coords.cityName ? coords.cityName :weather?.name}, {weather?.sys.country}</h2>
         </div>
         <div className="card__main">
           <div className="weather_img__conteiner">
-            <img className="weather_img" src={weather && `https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`} alt="" />
+            <img className="weather_img" src={ weather && `https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`} alt="" />
           </div>
           <section className="weather__information">
             <h3 className="weather__description">"{weather?.weather[0].description}"</h3>
