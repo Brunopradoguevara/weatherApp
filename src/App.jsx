@@ -47,7 +47,7 @@ function App() {
         const url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`
         axios.get(url)
         .then(res =>{
-          setIsLoading(false)
+         /*  setIsLoading(false) */
           const obj = {
           lat: res.data[0].lat,
           lon: res.data[0].lon
@@ -67,7 +67,7 @@ function App() {
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=${units}&appid=${apiKey}`  
       axios.get(url)
       .then(res => {
-        setIsLoading(false)
+        /* setIsLoading(false) */
         setWeather(res.data)
         const obj = {
           celsius: (res.data.main.temp).toFixed(1),
@@ -89,14 +89,14 @@ function App() {
       const newUrl=`https://pixabay.com/api/?key=${apiKey}&q=rain}`
       axios.get(newUrl)
       .then(res => {
-        setIsLoading(false)
+        /* setIsLoading(false) */
         setImage(res.data)
       })
       .catch(err => console.log(err))
     }else{
       axios.get(url)
       .then(res => {
-        setIsLoading(false)
+        /* setIsLoading(false) */
         setImage(res.data)
       })
       .catch(err => console.log(err))
