@@ -15,14 +15,13 @@ function App() {
   const [image, setImage] = useState()
   const [inputValue, setInputValue] = useState()
   const [isLoading, setIsLoading] = useState(true)
-  const [isAlertOpen, setIsAlertOpen] = useState(false) 
+  const [isAlertOpen, setIsAlertOpen] = useState('alert--close') 
 
   
     //Api navigator
    useEffect(() => {
     const success = pos =>{
       setIsLoading(true)
-      console.log("api navigator")
       const obj = {
         lat: pos.coords.latitude,
         lon: pos.coords.longitude
@@ -31,7 +30,7 @@ function App() {
       
     }
     const error = () => {
-      setIsAlertOpen(true)
+      setIsAlertOpen('')  
       setInputValue("london")
       
     }
@@ -43,7 +42,6 @@ function App() {
      useEffect(()=>{
       if(inputValue){
         setIsLoading(true)
-        console.log("api geo")
         const apiKey = "43be0da6a4d12a1f3d653a5f3389d21b"
         const cityName= inputValue
         const url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`
@@ -66,7 +64,6 @@ function App() {
   useEffect(()=>{
     if(coords){
       setIsLoading(true)
-      console.log("api weather")
       const apiKey = "43be0da6a4d12a1f3d653a5f3389d21b"
       const units = "metric"
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=${units}&appid=${apiKey}`  
@@ -91,7 +88,6 @@ function App() {
     const url = `https://pixabay.com/api/?key=${apiKey}&q=${weather?.weather[0].description}`
     if(weather?.weather[0].description==="moderate rain" || weather?.weather[0].description==="light intensity shower rain"){
       setIsLoading(true)
-      console.log("api pixabay")
       const newUrl=`https://pixabay.com/api/?key=${apiKey}&q=rain}`
       axios.get(newUrl)
       .then(res => {
@@ -99,11 +95,9 @@ function App() {
       })
       .catch(err => console.log(err))
       .finally(()=> {
-        setIsLoading(false) 
-        console.log("fin del loader")})
+        setIsLoading(false)})
     }else{
       setIsLoading(true)
-      console.log("api pixabay")
       axios.get(url)
       .then(res => {
         setImage(res.data)
@@ -111,8 +105,7 @@ function App() {
       })
       .catch(err => console.log(err))
       .finally(()=> {
-        setIsLoading(false) 
-        console.log("fin del loader")})
+        setIsLoading(false)})
     }
     
   },[weather])

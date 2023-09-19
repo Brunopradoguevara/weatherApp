@@ -12,7 +12,7 @@ const WeatherCard = ({weather,temp,coords}) => {
       <div className="card__conteiner">
         <div className="card__header">
           <h1 className="card__title">Weather App</h1>
-          <h2 className="card__location">{coords.cityName ? coords.cityName :weather?.name}, {weather?.sys.country}</h2>
+          <h2 className="card__location">{coords?.cityName ? coords.cityName :weather?.name}, {weather?.sys.country}</h2>
         </div>
         <div className="card__main">
           <div className="weather_img__conteiner">
